@@ -40,7 +40,7 @@ public class FileReader {
     }
 
     private String getFileContent(File file) {
-        StringBuilder content = new StringBuilder();;
+        StringBuilder content = new StringBuilder();
 
         try(RandomAccessFile aFile = new RandomAccessFile(file, "r");
             FileChannel inChannel = aFile.getChannel();) {
