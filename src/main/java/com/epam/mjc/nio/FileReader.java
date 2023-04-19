@@ -12,7 +12,7 @@ public class FileReader {
     public Profile getDataFromFile(File file) {
         String fileContent = getFileContent(file);
 
-        String[] lines = fileContent.split("\r\n");
+        String[] lines = fileContent.split("(\r\n|\n)");
         Profile p = new Profile();
 
         for(String line : lines) {
