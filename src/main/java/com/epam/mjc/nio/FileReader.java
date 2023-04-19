@@ -13,12 +13,30 @@ public class FileReader {
         String fileContent = getFileContent(file);
 
         String[] lines = fileContent.split("\r\n");
-        String name = lines[0].split(": ")[1];
-        int age = Integer.parseInt(lines[1].split(": ")[1]);
-        String email = lines[2].split(": ")[1];
-        long phone =  Long.parseLong(lines[3].split(": ")[1]);
+        Profile p = new Profile();
 
-        return new Profile(name, age, email, phone);
+        for(String line : lines) {
+            String[] keyValue = line.split(": ");
+            switch (keyValue[0]) {
+                case "Name":
+                    p.setName(keyValue[1]);
+                    break;
+                case "Age":
+                    p.setAge(Integer.parseInt(keyValue[1]));
+                    break;
+                case "Email":
+                    p.setEmail(keyValue[1]);
+                    break;
+                case "Phone":
+                    p.setPhone(Long.parseLong(keyValue[1]));
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        return p;
     }
 
     private String getFileContent(File file) {
